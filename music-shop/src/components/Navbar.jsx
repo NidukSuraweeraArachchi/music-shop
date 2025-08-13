@@ -1,28 +1,29 @@
-// src/components/Navbar.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const navLink =
+  "hover:text-blue-600 transition-colors px-2 py-1 rounded";
+
+export default function Navbar() {
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-white shadow-md sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
+        {/* Brand */}
+        <Link to="/" className="flex items-center space-x-2">
+          <span role="img" aria-label="guitar" className="text-pink-500 text-2xl">
+            🎸
+          </span>
+          <span className="text-xl font-bold text-gray-800">MusicVerse</span>
+        </Link>
 
-        {/* Logo + Brand Name */}
-        <div className="flex items-center space-x-2">
-          <span role="img" aria-label="guitar" className="text-pink-500 text-2xl">🎸</span>
-          <h1 className="text-xl font-bold text-gray-800">MusicVerse</h1>
-        </div>
-
-        {/* Navigation Links */}
-        <div className="flex space-x-6 text-gray-700 font-medium">
-          <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
-          <Link to="/products" className="hover:text-blue-600 transition-colors">Products</Link>
-          <Link to="/cart" className="hover:text-blue-600 transition-colors">Cart</Link>
-          <Link to="/login" className="hover:text-blue-600 transition-colors">Login</Link>
+        {/* Links */}
+        <div className="flex items-center space-x-6 text-gray-700 font-medium">
+          <NavLink to="/" className={navLink}>Home</NavLink>
+          <NavLink to="/products" className={navLink}>Products</NavLink>
+          <NavLink to="/cart" className={navLink}>Cart</NavLink>
+          <NavLink to="/login" className={navLink}>Login</NavLink>
         </div>
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}
